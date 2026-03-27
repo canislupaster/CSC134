@@ -13,12 +13,11 @@ class SavingsAccount {
 private:
     int dollars, cents;
     void normalizeCents() {
-        while (cents >= 100) {
-            dollars++;
-            cents -= 100;
-        } while (cents < 0) {
+        dollars += cents/100;
+        cents %= 100;
+        if (cents<0) {
+            cents+=100;
             dollars--;
-            cents += 100;
         }
     }
 public:
